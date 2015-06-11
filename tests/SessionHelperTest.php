@@ -6,9 +6,9 @@ class SessionHelperTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         Mage::init();
-        Mage::helper('guestwishlist/session')->saveFavourite(1);
-        Mage::helper('guestwishlist/session')->saveFavourite(2);
-        Mage::helper('guestwishlist/session')->saveFavourite(3);
+        Mage::helper('guestwishlist')->saveFavourite(1);
+        Mage::helper('guestwishlist')->saveFavourite(2);
+        Mage::helper('guestwishlist')->saveFavourite(3);
     }
     
     public function tearDown()
@@ -29,7 +29,7 @@ class SessionHelperTest extends PHPUnit_Framework_TestCase
      */
     public function it_can_remove_a_favourite_item_from_a_session_key()
     {
-        Mage::helper('guestwishlist/session')->removeFavourite(3);
+        Mage::helper('guestwishlist')->removeFavourite(3);
         $this->assertEquals(Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER), array(1,2));
     }
 }

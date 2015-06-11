@@ -1,14 +1,20 @@
 <?php 
 
-class KL_GuestWishlist_Model_Favourites extends Mage_Catalog_Model_Resource_Product_Collection
+class KL_GuestWishlist_Model_Favourites
 {
     /**
      * @return Mage_Catalog_Model_Resource_Product_Collection
      */
     public function loadItems()
     {
-       return $this->addAttributeToFilter('in', $this->getFavouriteIds())
-                   ->addAttributeToSelect('*')
+       return Mage::getModel('catalog/product')->getCollection()
+           ->addAttributeToFilter(array(
+               array(
+                   'attribute' => 'entity_id',
+                   'in' => $this->getFavouriteIds()
+               )
+           ))
+            ->addAttributeToSelect('*')
        ;
     }
 

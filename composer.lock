@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b56ea9103bedf9b7141ffecda91092c3",
+    "hash": "3b59daec610c34ecb75e82d0e3a204f2",
     "packages": [],
     "packages-dev": [
         {
@@ -257,6 +257,58 @@
                 "proxy"
             ],
             "time": "2013-03-04 10:10:43"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2015-05-29 06:29:14"
         },
         {
             "name": "icecave/isolator",
@@ -582,6 +634,68 @@
                 "issues": "https://github.com/bragento/magento-core/issues"
             },
             "time": "2014-12-17 18:09:33"
+        },
+        {
+            "name": "magetest/manager",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dwickstrom/Manager.git",
+                "reference": "9b1a40389d44969d49ef4043c7491999c5216dbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dwickstrom/Manager/zipball/9b1a40389d44969d49ef4043c7491999c5216dbf",
+                "reference": "9b1a40389d44969d49ef4043c7491999c5216dbf",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "~1.4",
+                "php": ">=5.4",
+                "symfony/yaml": "~2.6"
+            },
+            "require-dev": {
+                "behat/mink": "~1.6.0",
+                "behat/mink-goutte-driver": "~1.1",
+                "magento/core": "~1.9",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": [
+                        "vendor/magento/core/app",
+                        "vendor/magento/core/lib",
+                        "vendor/magento/core/app/code/local",
+                        "vendor/magento/core/app/code/community",
+                        "vendor/magento/core/app/code/core"
+                    ],
+                    "MageTest\\Manager": [
+                        "src",
+                        "tests"
+                    ]
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/MageTest/Manager/contributors"
+                }
+            ],
+            "description": "Magento fixture manager",
+            "keywords": [
+                "fixture",
+                "magento",
+                "testing"
+            ],
+            "support": {
+                "source": "https://github.com/dwickstrom/Manager/tree/v1.0.2"
+            },
+            "time": "2015-05-07 07:51:29"
         },
         {
             "name": "phpdocumentor/reflection-docblock",

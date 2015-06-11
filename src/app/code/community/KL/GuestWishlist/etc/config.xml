@@ -17,4 +17,15 @@
             </guestwishlist>
         </models>
     </global>
+    <frontend>
+        <routers>
+            <guestwishlist>
+                <use>standard</use>
+                <args>
+                    <module>KL_GuestWishlist</module>
+                    <frontname>guest-wishlist</frontname>
+                </args>
+            </guestwishlist>
+        </routers>
+    </frontend>
 </config>
