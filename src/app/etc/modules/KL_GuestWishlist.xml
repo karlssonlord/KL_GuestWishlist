@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <KL_GuestWishlist>
+            <active>true</active>
+            <codePool>community</codePool>
+        </KL_GuestWishlist>
+    </modules>
+</config>
