@@ -16,6 +16,10 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
         Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, array($productId));
     }
 
+    /**
+     * @param $productId
+     * @return Varien_Object
+     */
     public function removeFavourite($productId)
     {
         $items = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
@@ -24,6 +28,16 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
             unset($items[$key]);
             return Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, $items);
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getItemsCount()
+    {
+        $sessionKey = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
+        if (!is_array($sessionKey)) return 0;
+        return count($sessionKey);
     }
 
     /**
