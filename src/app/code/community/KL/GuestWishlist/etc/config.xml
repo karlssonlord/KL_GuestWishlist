@@ -27,5 +27,12 @@
                 </args>
             </guestwishlist>
         </routers>
+        <layout>
+            <updates>
+                <guestwishlist>
+                    <file>guestwishlist.xml</file>
+                </guestwishlist>
+            </updates>
+        </layout>
     </frontend>
 </config>
