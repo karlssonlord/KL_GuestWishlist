@@ -1,0 +1,29 @@
+<?php
+/**
+ * Product list template (forced grid)
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+
+$_productCollection=$this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+?>
+
+    <div class="category-products">
+        <?php if(!$_productCollection->count()) : ?>
+        <p class="note-msg"><?php echo $this->__('You haven\'t any favourites yet.') ?></p>
+        <?php else: ?>
+
+        <?php
+        /**
+         * The `productList` block needs to be added in the layout as a child and
+         * be of the same type as this one.
+         */
+        $this->getChild('productList')->setData(array(
+            'products' => $_productCollection));
+        echo $this->getChildHtml('productList');
+        ?>
+
+        <?php echo $this->getToolbarHtml(); ?>
+        <?php endif; ?>
+    </div>

@@ -40,6 +40,14 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
         return count($sessionKey);
     }
 
+    public function isFavourite(Mage_Catalog_Model_Product $product)
+    {
+        return $this->itemExists(
+            $product->getId(),
+            Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER)
+        );
+    }
+
     /**
      * @param $productId
      * @param $items
