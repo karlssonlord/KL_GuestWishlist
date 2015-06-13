@@ -6,12 +6,12 @@ class KL_GuestWishlist_Block_Items extends KL_Boilerplate_Block_Catalog_Product_
 
     public function getLoadedProductCollection()
     {
-//        return Mage::getModel('guestwishlist/favourites')->loadItems();
-        return Mage::getModel('catalog/product')
-            ->getCollection()
-            ->addAttributeToSelect('*')
-            ->setPageSize(8)
-            ->setCurPage(1)
-        ;
+        return Mage::getModel('guestwishlist/favourites')->loadItems();
+//        return Mage::getModel('catalog/product')
+//            ->getCollection()
+//            ->addAttributeToSelect('*')
+//            ->setPageSize(16)
+//            ->setCurPage(1)
+//        ;
     }
 }
