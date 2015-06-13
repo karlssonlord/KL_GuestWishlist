@@ -37,7 +37,7 @@ class KL_GuestWishlist_ItemController extends Mage_Core_Controller_Front_Action
         if (count($items)) {
             $this->getResponse()->setHttpResponseCode(200);
             $this->getResponse()->setBody(
-                Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, $secure = true) . '/guest-wishlist/?items=' . $items->toJson()
+                Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, $secure = true) . 'guest-wishlist/?items=' . $items->toJson()
             );
         } else {
             $this->getResponse()->setHttpResponseCode(400);
