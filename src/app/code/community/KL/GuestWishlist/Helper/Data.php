@@ -2,18 +2,26 @@
 
 class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    protected $items;
+
+    public function __construct()
+    {
+        $this->items = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
+    }
     /**
      * @param $productId
      * @return Varien_Object
      */
     public function saveFavourite($productId)
     {
-        $items = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
-        if (is_array($items)) {
-            array_push($items, $productId);
-            return Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, $items);
+        return $this->addToSessionArray($productId);
+    }
+
+    public function merge($productId)
+    {
+        if (!$this->itemAlreadySaved($productId)) {
+            $this->addToSessionArray($productId);
         }
-        Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, array($productId));
     }
 
     /**
@@ -22,11 +30,10 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function removeFavourite($productId)
     {
-        $items = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
-        if ($this->sessionHasFavourites($items) && $this->itemExists($productId, $items)) {
-            $key = array_search($productId, $items);
-            unset($items[$key]);
-            return Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, $items);
+        if ($this->sessionHasFavourites($this->items) && $this->itemExists($productId, $this->items)) {
+            $key = array_search($productId, $this->items);
+            unset($this->items[$key]);
+            return Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, $this->items);
         }
     }
 
@@ -48,6 +55,24 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
         );
     }
 
+    public function getAll()
+    {
+        if (!$this->items) {
+            $this->items = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
+        }
+        return $this;
+    }
+
+    public function toJson()
+    {
+        return json_encode($this->items);
+    }
+
+    public function toArray()
+    {
+        return (array)$this->items;
+    }
+
     /**
      * @param $productId
      * @param $items
@@ -65,6 +90,31 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
     private function sessionHasFavourites($items)
     {
         return is_array($items);
+    }
+
+    /**
+     * @param $productId
+     * @return mixed
+     */
+    private function addToSessionArray($productId)
+    {
+        if (is_array($this->items)) {
+            array_push($this->items, $productId);
+            return Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, $this->items);
+        }
+        return Mage::getSingleton('core/session')->setData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER, array($productId));
+    }
+
+    /**
+     * @param $productId
+     * @return bool
+     */
+    private function itemAlreadySaved($productId)
+    {
+        if (!is_array($this->items)) {
+            return false;
+        }
+        return in_array($productId, $this->items);
     }
 
 }
