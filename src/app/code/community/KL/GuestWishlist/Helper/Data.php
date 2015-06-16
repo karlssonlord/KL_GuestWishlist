@@ -4,7 +4,7 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
 {
     protected $items;
 
-    public function _construct()
+    public function __construct()
     {
         $this->items = Mage::getSingleton('core/session')->getData(KL_GuestWishlist_Model_Item::KEY_IDENTIFIER);
     }
