@@ -129,6 +129,9 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
      */
     private function itemExists($productId, $items)
     {
+        if (!is_array($items)) {
+            return false;
+        }
         return in_array($productId, $items);
     }
 
