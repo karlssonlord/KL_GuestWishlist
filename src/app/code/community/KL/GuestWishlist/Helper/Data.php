@@ -73,6 +73,25 @@ class KL_GuestWishlist_Helper_Data extends Mage_Core_Helper_Abstract
         return false;
     }
 
+    public function getRemoveUrlWithParams($item, array $params = array())
+    {
+        $productId = null;
+        if ($item instanceof Mage_Catalog_Model_Product) {
+            $productId = $item->getEntityId();
+        }
+        if ($item instanceof Mage_Wishlist_Model_Item) {
+            $productId = $item->getProductId();
+        }
+
+        if ($productId) {
+            $params['product_id'] = $productId;
+            $params[Mage_Core_Model_Url::FORM_KEY] = $this->_getSingletonModel('core/session')->getFormKey();
+            return $this->_getUrlStore($item)->getUrl('guest-wishlist/item/remove', $params);
+        }
+
+        return false;
+    }
+
     /**
      * @param $productId
      * @return Varien_Object
