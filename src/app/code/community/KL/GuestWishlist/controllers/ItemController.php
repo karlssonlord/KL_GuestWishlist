@@ -6,7 +6,7 @@ class KL_GuestWishlist_ItemController extends Mage_Core_Controller_Front_Action
     {
         try
         {
-            Mage::helper('guestwishlist')->saveFavourite($this->getRequest()->getPost('product_id'));
+            Mage::helper('guestwishlist')->saveFavourite($this->getRequest()->getParam('product_id'));
         }
         catch (Exception $e)
         {
@@ -20,7 +20,7 @@ class KL_GuestWishlist_ItemController extends Mage_Core_Controller_Front_Action
     {
         try
         {
-            Mage::helper('guestwishlist')->removeFavourite($this->getRequest()->getPost('product_id'));
+            Mage::helper('guestwishlist')->removeFavourite($this->getRequest()->getParam('product_id'));
         }
         catch (Exception $e)
         {
